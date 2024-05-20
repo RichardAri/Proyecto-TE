@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyHub</title>
+    <title>StudyHub - Demo</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -11,51 +11,63 @@
         <h1>StudyHub</h1>
     </header>
     <main>
-        <section id="schedule">
-            <h2>Horario</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Hora</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>08:00 - 09:00</td>
-                        <td>Matemáticas</td>
-                        <td>Historia</td>
-                        <td>Ciencias</td>
-                        <td>Matemáticas</td>
-                        <td>Física</td>
-                    </tr>
-                    <!-- Más filas aquí -->
-                </tbody>
-            </table>
-        </section>
-        
-        <section id="team-work">
-            <h2>Trabajos en Equipo</h2>
-            <div id="create-team">
-                <h3>Crear Nuevo Equipo</h3>
-                <form id="create-team-form">
-                    <label for="team-name">Nombre del Equipo:</label>
-                    <input type="text" id="team-name" name="team-name" required>
-                    <button type="submit">Crear Equipo</button>
-                </form>
-            </div>
-            <div id="teams-list">
-                <h3>Equipos</h3>
-                <ul>
-                    <!-- Lista de equipos aquí -->
-                </ul>
-            </div>
-        </section>
+        <div id="main-container">
+            <section id="calendar">
+                <h2 id="calendar-title">Mayo de 2024</h2>
+                <div id="calendar-controls">
+                    <select id="month-select">
+                        <option value="0">Enero</option>
+                        <option value="1">Febrero</option>
+                        <option value="2">Marzo</option>
+                        <option value="3">Abril</option>
+                        <option value="4" selected>Mayo</option>
+                        <option value="5">Junio</option>
+                        <option value="6">Julio</option>
+                        <option value="7">Agosto</option>
+                        <option value="8">Septiembre</option>
+                        <option value="9">Octubre</option>
+                        <option value="10">Noviembre</option>
+                        <option value="11">Diciembre</option>
+                    </select>
+                    <select id="year-select">
+                        <option value="2023">2023</option>
+                        <option value="2024" selected>2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                    <button id="generate-btn">Generar</button>
+                </div>
+                <div id="calendar-view">
+                    <!-- Vista del calendario aquí -->
+                </div>
+            </section>
+
+            <section id="tasks">
+                <h2>Tareas del Día</h2>
+                <div id="tasks-list">
+                    <!-- Lista de tareas aquí -->
+                </div>
+                <h2>Trabajos en Equipo</h2>
+                <div id="create-team">
+                    <h3>Crear Nuevo Equipo</h3>
+                    <form id="create-team-form">
+                        <label for="team-name">Nombre del Equipo:</label>
+                        <input type="text" id="team-name" name="team-name" required>
+                        <label for="team-start-date">Fecha de Inicio:</label>
+                        <input type="date" id="team-start-date" name="team-start-date" required>
+                        <label for="team-end-date">Fecha de Fin:</label>
+                        <input type="date" id="team-end-date" name="team-end-date" required>
+                        <button type="submit">Crear Equipo</button>
+                    </form>
+                </div>
+                <div id="teams-list">
+                    <h3>Equipos</h3>
+                    <ul>
+                        <!-- Lista de equipos aquí -->
+                    </ul>
+                </div>
+            </section>
+        </div>
     </main>
-    <script src="scripts.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
