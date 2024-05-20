@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-color: #3f51b5;
+    background-color: #4728b8;
     color: white;
     width: 100%;
     text-align: center;
@@ -69,13 +69,14 @@ main {
 }
 
 #calendar-view .header {
-    background-color: #444;
+    background-color: #4728b8;
     font-weight: bold;
     text-align: center;
+    padding: 20px;
 }
 
 .day {
-    background-color: #3a3a3c;
+    background-color: #222;
     border: 1px solid #555;
     padding: 10px;
     text-align: center;
@@ -100,14 +101,15 @@ main {
 .task-dot {
     width: 8px;
     height: 8px;
-    background-color: #0a84ff;
+    background-color: #54ca51;
     border-radius: 50%;
     display: inline-block;
     margin: 2px;
 }
 
 .selected {
-    background-color: #0a84ff;
+    background-color: #171717;
+    border-color: #4728b8;
 }
 
 form {
@@ -127,14 +129,19 @@ form input, form button {
 }
 
 form input {
-    background-color: #3a3a3c;
+    background-color: #222;
     color: white;
 }
 
 form button {
-    background-color: #0a84ff;
+    background-color: #4728b8;
     color: white;
     cursor: pointer;
+    font-size: 20px;
+}
+
+form button:hover {
+    background-color: #5c36e4;
 }
 
 ul {
@@ -147,4 +154,8 @@ ul li {
     padding: 10px;
     margin: 5px 0;
     border-radius: 4px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Invertir los colores */
 }

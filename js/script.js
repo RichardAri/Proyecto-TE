@@ -109,7 +109,7 @@ function generateCalendar(month, year) {
 
 function selectDate(date) {
     const allDays = document.querySelectorAll('#calendar-view .day');
-    allDays.forEach(day => day.classList.remove('selected'));
+    allDays.forEach(day => day.classList.remove('selected')); //agrega clase selected
 
     const selectedDay = document.querySelector(`#calendar-view .day[data-date="${date}"]`);
     if (selectedDay) {
@@ -136,6 +136,7 @@ function showTasksForDate(date) {
     }
 }
 
+// Se actualiza dinamicamente el mes y año
 function updateCalendarTitle(month, year) {
     const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const calendarTitle = document.getElementById('calendar-title');
@@ -158,5 +159,5 @@ function changeMonth(step) {
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 
-// Generar el calendario para el mes y año actuales al cargar la página
+// Generar el calendario para el mes y año actuales al cargar la pagina
 generateCalendar(currentMonth, currentYear);
