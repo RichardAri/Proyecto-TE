@@ -17,10 +17,12 @@ document.getElementById('create-team-form').addEventListener('submit', function(
     document.getElementById('create-team-form').reset();
 });
 
-document.getElementById('generate-btn').addEventListener('click', function() {
-    const month = document.getElementById('month-select').value;
-    const year = document.getElementById('year-select').value;
-    generateCalendar(month, year);
+document.getElementById('prev-month').addEventListener('click', function() {
+    changeMonth(-1);
+});
+
+document.getElementById('next-month').addEventListener('click', function() {
+    changeMonth(1);
 });
 
 function addTeamToList(teamName, startDate, endDate) {
@@ -32,7 +34,7 @@ function addTeamToList(teamName, startDate, endDate) {
 
 const tasks = {
     "2024-05-01": [{ time: "VACAC.", title: "", location: "" }],
-    "2024-05-19": [
+    "2024-05-20": [
         { time: '6:30 p.m. - 7:15 p.m.', title: 'Prácticas PreProfesionales', location: 'A 101' },
         { time: '7:15 p.m. - 8:45 p.m.', title: 'Tecnologías Emergentes', location: 'A 101' },
         { time: '8:45 p.m. - 9:30 p.m.', title: 'Tutoría Semestre 9', location: 'A 101' }
@@ -52,16 +54,14 @@ function addTeamToCalendar(teamName, startDate, endDate) {
         currentDate.setDate(currentDate.getDate() + 1);
     }
 
-    const month = document.getElementById('month-select').value;
-    const year = document.getElementById('year-select').value;
-    generateCalendar(month, year);
+    generateCalendar(currentMonth, currentYear);
 }
 
 function generateCalendar(month, year) {
     const calendarView = document.getElementById('calendar-view');
     calendarView.innerHTML = ''; // Clear previous calendar
 
-    const daysOfWeek = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+    const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
     daysOfWeek.forEach(day => {
         const headerElement = document.createElement('div');
         headerElement.textContent = day;
@@ -83,14 +83,18 @@ function generateCalendar(month, year) {
 
     for (let i = 1; i <= daysInMonth; i++) {
         const dayElement = document.createElement('div');
-        dayElement.textContent = i;
+        dayElement.className = 'day';
+        dayElement.innerHTML = `<div class="day-number">${i}</div><div class="dots-container"></div>`;
         const dateStr = `${year}-${String(parseInt(month) + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
         dayElement.dataset.date = dateStr;
 
         if (tasks[dateStr] && tasks[dateStr].length > 0) {
-            const dotElement = document.createElement('span');
-            dotElement.className = 'task-dot';
-            dayElement.appendChild(dotElement);
+            const dotsContainer = dayElement.querySelector('.dots-container');
+            tasks[dateStr].forEach(() => {
+                const dotElement = document.createElement('span');
+                dotElement.className = 'task-dot';
+                dotsContainer.appendChild(dotElement);
+            });
         }
 
         dayElement.addEventListener('click', function() {
@@ -104,10 +108,10 @@ function generateCalendar(month, year) {
 }
 
 function selectDate(date) {
-    const allDays = document.querySelectorAll('#calendar-view div');
+    const allDays = document.querySelectorAll('#calendar-view .day');
     allDays.forEach(day => day.classList.remove('selected'));
 
-    const selectedDay = document.querySelector(`#calendar-view div[data-date="${date}"]`);
+    const selectedDay = document.querySelector(`#calendar-view .day[data-date="${date}"]`);
     if (selectedDay) {
         selectedDay.classList.add('selected');
         showTasksForDate(date);
@@ -138,9 +142,21 @@ function updateCalendarTitle(month, year) {
     calendarTitle.textContent = `${monthNames[month]} de ${year}`;
 }
 
+function changeMonth(step) {
+    currentMonth += step;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    } else if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    generateCalendar(currentMonth, currentYear);
+}
+
+// Variables globales para el mes y año actuales
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+
 // Generar el calendario para el mes y año actuales al cargar la página
-const currentMonth = new Date().getMonth();
-const currentYear = new Date().getFullYear();
-document.getElementById('month-select').value = currentMonth;
-document.getElementById('year-select').value = currentYear;
 generateCalendar(currentMonth, currentYear);
