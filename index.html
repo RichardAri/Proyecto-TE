@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>StudyHub</h1>
+    </header>
+    <main>
+        <section id="schedule">
+            <h2>Horario</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>08:00 - 09:00</td>
+                        <td>Matemáticas</td>
+                        <td>Historia</td>
+                        <td>Ciencias</td>
+                        <td>Matemáticas</td>
+                        <td>Física</td>
+                    </tr>
+                    <!-- Más filas aquí -->
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="team-work">
+            <h2>Trabajos en Equipo</h2>
+            <div id="create-team">
+                <h3>Crear Nuevo Equipo</h3>
+                <form id="create-team-form">
+                    <label for="team-name">Nombre del Equipo:</label>
+                    <input type="text" id="team-name" name="team-name" required>
+                    <button type="submit">Crear Equipo</button>
+                </form>
+            </div>
+            <div id="teams-list">
+                <h3>Equipos</h3>
+                <ul>
+                    <!-- Lista de equipos aquí -->
+                </ul>
+            </div>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
