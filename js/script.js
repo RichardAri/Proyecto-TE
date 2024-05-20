@@ -61,7 +61,7 @@ function generateCalendar(month, year) {
     const calendarView = document.getElementById('calendar-view');
     calendarView.innerHTML = ''; // Clear previous calendar
 
-    const daysOfWeek = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
+    const daysOfWeek = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
     daysOfWeek.forEach(day => {
         const headerElement = document.createElement('div');
         headerElement.textContent = day;
@@ -70,7 +70,10 @@ function generateCalendar(month, year) {
     });
 
     const date = new Date(year, month, 1);
-    const firstDay = date.getDay();
+    let firstDay = date.getDay();
+    // Adjust firstDay to start from Monday
+    firstDay = (firstDay === 0) ? 6 : firstDay - 1;
+
     const daysInMonth = new Date(year, parseInt(month) + 1, 0).getDate();
 
     for (let i = 0; i < firstDay; i++) {
@@ -96,6 +99,8 @@ function generateCalendar(month, year) {
 
         calendarView.appendChild(dayElement);
     }
+
+    updateCalendarTitle(month, year);
 }
 
 function selectDate(date) {
@@ -125,6 +130,12 @@ function showTasksForDate(date) {
             tasksList.appendChild(taskItem);
         });
     }
+}
+
+function updateCalendarTitle(month, year) {
+    const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const calendarTitle = document.getElementById('calendar-title');
+    calendarTitle.textContent = `${monthNames[month]} de ${year}`;
 }
 
 // Generar el calendario para el mes y año actuales al cargar la página
