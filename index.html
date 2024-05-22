@@ -14,33 +14,26 @@
         <div id="main-container">
             <section id="calendar">
                 <div id="calendar-header">
-                    <button id="prev-month">&lt;</button>
+                    <button id="prev-month"><</button>
                     <h2 id="calendar-title">Mayo de 2024</h2>
-                    <button id="next-month">&gt;</button>
+                    <button id="next-month">></button>
                 </div>
                 <div id="calendar-view">
-                    <!-- Vista del calendario aquí -->
+                    <!-- Vista del calendario aqui -->
                 </div>
             </section>
-
+            
             <section id="tasks">
-                <h2>Tareas del Día</h2>
+                <div class="tasks-header">
+                    <h2>Tareas del Día:</h2>
+                    <button class="form_button" id="open-add-team-modal-button">
+                        <span>+</span> Añadir Equipo
+                    </button>
+                </div>
                 <div id="tasks-list">
                     <!-- Lista de tareas aquí -->
                 </div>
-                <h2>Trabajos en Equipo</h2>
-                <div id="create-team">
-                    <h3>Crear Nuevo Equipo</h3>
-                    <form id="create-team-form">
-                        <label for="team-name">Nombre del Equipo:</label>
-                        <input type="text" id="team-name" name="team-name" required>
-                        <label for="team-start-date">Fecha de Inicio:</label>
-                        <input type="date" id="team-start-date" name="team-start-date" required>
-                        <label for="team-end-date">Fecha de Fin:</label>
-                        <input type="date" id="team-end-date" name="team-end-date" required>
-                        <button type="submit">Crear Equipo</button>
-                    </form>
-                </div>
+                <h2>Trabajos en Equipo:</h2>
                 <div id="teams-list">
                     <h3>Equipos</h3>
                     <ul>
@@ -50,6 +43,60 @@
             </section>
         </div>
     </main>
+
+    <!-- Modal para Añadir Equipo -->
+    <div id="add-team-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Crear Equipo</h3>
+            <form class="form_container" id="add-team-form">
+                <label class="form_label" for="add-team-name">Nombre del Equipo:</label>
+                <input class="form_input" type="text" id="add-team-name" name="team-name" required>
+                <label class="form_label" for="add-team-start-date">Fecha de Inicio:</label>
+                <input class="form_input" type="date" id="add-team-start-date" name="team-start-date" required>
+                <label class="form_label" for="add-team-end-date">Fecha de Fin:</label>
+                <input class="form_input" type="date" id="add-team-end-date" name="team-end-date" required>
+                <button class="form_button" type="submit">Crear Equipo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Equipo -->
+    <div id="edit-team-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Editar Equipo</h3>
+            <form class="form_container" id="edit-team-form">
+                <input type="hidden" id="edit-team-id">
+                <label class="form_label" for="edit-team-name">Nombre del Equipo:</label>
+                <input class="form_input" type="text" id="edit-team-name" name="team-name" required>
+                <label class="form_label" for="edit-team-start-date">Fecha de Inicio:</label>
+                <input class="form_input" type="date" id="edit-team-start-date" name="team-start-date" required>
+                <label class="form_label" for="edit-team-end-date">Fecha de Fin:</label>
+                <input class="form_input" type="date" id="edit-team-end-date" name="team-end-date" required>
+                <button class="form_button" type="submit">Guardar Cambios</button>
+            </form>
+            <h3>Agregar Miembros</h3>
+            <form class="form_container" id="add-member-form">
+                <label class="form_label" for="member-name">Nombre del Miembro:</label>
+                <input class="form_input" type="text" id="member-name" name="member-name" required>
+                <button class="form_button" type="submit">Agregar Miembro</button>
+            </form>
+            <h3>Asignar Tareas</h3>
+            <form class="form_container" id="assign-task-form">
+                <label class="form_label" for="task-title">Título de la Tarea:</label>
+                <input class="form_input" type="text" id="task-title" name="task-title" required>
+                <label class="form_label" for="task-member">Asignar a:</label>
+                <select class="form_input" id="task-member" name="task-member" required>
+                    <!-- Opciones de miembros se añadirán aquí dinámicamente -->
+                </select>
+                <label class="form_label" for="task-date">Fecha:</label>
+                <input class="form_input" type="date" id="task-date" name="task-date" required>
+                <button class="form_button" type="submit">Asignar Tarea</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
